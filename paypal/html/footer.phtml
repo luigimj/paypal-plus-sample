@@ -1,0 +1,15 @@
+<hr>
+<hr>
+<?php 
+$endPageTime=microtime(TRUE);
+$totalPageTime=$endPageTime-$startPageTime;
+echo "<br><B>Load time: ".number_format($totalPageTime, 4)." seconds</B><br>";
+
+json_encode(var_dump($_SESSION)); 
+?>
+
+
+
+</center>
+</body>
+</html>
