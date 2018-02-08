@@ -1,34 +1,38 @@
 <?php
-//
-//	This is the CONTROLER
 
+//	This is the CONTROLER
 session_start();
 
 if (!empty($_POST)) { $REQUEST = $_POST; }
 if (!empty($_GET)) 	{ $REQUEST = $_GET; }
+
 if (!empty($REQUEST)) {
-include("function.php");
-$DISPLAY = 'none';
-$_SESSION['status'] = 'none';
+
+	include("function.php");
+	$DISPLAY = 'none';
+	$_SESSION['status'] = 'none';
+
 	switch ($REQUEST['action']) {
 		
 		case 'sale':
 			$_SESSION['ItemName'] = filter_var($REQUEST['product'].' '.$REQUEST['option1'].' '.$REQUEST['option2'], FILTER_SANITIZE_STRING);
 			$_SESSION['ItemQty'] = round($REQUEST['qty'],2);
 			$_SESSION['ItemTaxRate'] = round($REQUEST['tax_rate'] / 100,2);
-				if (PRICE_IS_NET == false){  // Price includes tax
-				$_SESSION['ItemPrice'] = round($REQUEST['price'] / (1+$ItemTaxRate),2);
+			
+			if (PRICE_IS_NET == false){  // Price includes tax
+				$_SESSION['ItemPrice'] = round($REQUEST['price'] / (1+$_SESSION['ItemTaxRate']),2);
 				$_SESSION['TotalItemAmount'] = $_SESSION['ItemPrice'] * $_SESSION['ItemQty'];
 				$_SESSION['ShippingAmt'] = round($REQUEST['shipping'] / (1+$_SESSION['ItemTaxRate']),2);
-				$_SESSION['TotalTaxAmt'] = ($REQUEST[price] * $_SESSION['ItemQty']) + $REQUEST['shipping'] - $_SESSION['TotalItemAmount'] - $_SESSION['ShippingAmt'];
+				$_SESSION['TotalTaxAmt'] = ($REQUEST['price'] * $_SESSION['ItemQty']) + $REQUEST['shipping'] - $_SESSION['TotalItemAmount'] - $_SESSION['ShippingAmt'];
 				$_SESSION['TotalOrderAmount'] = $_SESSION['TotalItemAmount'] + $_SESSION['ShippingAmt'] + $_SESSION['TotalTaxAmt'];
-				} else {	// price not includes tax
+			} else {	// price not includes tax
 				$_SESSION['ItemPrice'] = round($REQUEST['price'] * (1+$_SESSION['ItemTaxRate']),2);
 				$_SESSION['TotalItemAmount'] = $_SESSION['ItemPrice'] * $_SESSION['ItemQty'];
 				$_SESSION['ShippingAmt'] = round( $REQUEST['shipping'] * (1+$_SESSION['ItemTaxRate']),2);
 				$_SESSION['TotalTaxAmt'] = $_SESSION['TotalItemAmount'] + $_SESSION['ShippingAmt'] - ($REQUEST['price'] * $_SESSION['ItemQty']) - $REQUEST['shipping'];
 				$_SESSION['TotalOrderAmount'] = $_SESSION['TotalItemAmount'] + $_SESSION['ShippingAmt'] + $_SESSION['TotalTaxAmt'];
-				}
+			}
+
 			include('html/header.phtml');
 			include('html/cart.phtml');
 			include('html/footer.phtml');
@@ -55,9 +59,14 @@ $_SESSION['status'] = 'none';
 				$DISPLAY = "paywall";
 				include( 'html/header.phtml');
 				GetApprovalURL();
-				exit;
-				if ($_SESSION['status'] == 'created'){ include('html/payment.phtml'); }
-				else { header('Location: '.$_SESSION['BASE_URL'].'/paypal/index.php?action=cart_change');exit;}
+				
+				if ($_SESSION['status'] == 'created') { 
+					include('html/payment.phtml'); 
+				}
+				else { 
+					header('Location: '.$_SESSION['BASE_URL'].'/paypal/index.php?action=cart_change');exit;
+				}
+				
 				include('html/footer.phtml');
 				exit;
 			} else { 
@@ -109,6 +118,7 @@ $_SESSION['status'] = 'none';
 		include('html/404.phtml');
 		include('html/footer.phtml');
 	}
+	
 } else { 
 	include('html/header.phtml');
 	include("html/404.phtml");
