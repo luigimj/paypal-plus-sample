@@ -237,7 +237,7 @@
 						"phone": "'.$_SESSION['phone'].'"
 					}
 				}
-			]}
+			}]
 		}'; 
 		//var_dump($JSONrequest);
 	
