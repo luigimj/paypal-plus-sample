@@ -1,33 +1,42 @@
 <center>
-<h2>Special Offer</h2><HR>
-		<form method="post" action="./paypal/index.php" >
-			<input hidden="text" name="action" value="sale">
-			<h2>
-			<input hidden="text" name="product"value="T-Shirt"> T-Shirt 
-			<input hidden="text" name="price"value="10.00"> for USD 10.00
-			<input hidden="text" name="shipping"value="5.00">
-			<input hidden="text" name="tax_rate"value="20">
-			</h2>
-			<img src="http://t2.ftcdn.net/jpg/00/42/74/63/400_F_42746392_mnyKgbvEE6AZv3IuFKbg20Rl27ja7CFk.jpg" alt="T-Shirt">
-			<br> -------------------------------------------------------------------- <br>
-			<input type="radio" name="option1" value="Weiß">Weiß<br>
-			<input type="radio" name="option1" value="Schwarz"checked="checked">Schwarz
-			<br> -------------------------------------------------------------------- <br>
-			<input type="radio" name="option2" value="XS">XS<br>
-			<input type="radio" name="option2" value="S">S<br>
-			<input type="radio" name="option2" value="M">M<br>
-			<input type="radio" name="option2" value="L" checked="checked">L<br>
-			<input type="radio" name="option2" value="XL">XL<br>
-			<input type="radio" name="option2" value="XXL">XXL
-			<br> -------------------------------------------------------------------- <br>
-			Quantety : 
-				<select name="qty">
-				  <option value="1">1</option>
-				  <option value="2">2</option>
-				  <option value="3">3</option>
-				  <option value="4">4</option>
-				</select>
-			Pices
-			<br> -------------------------------------------------------------------- <br>
-			<input type="image" value="submit" name="SetExpressCheckout" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" >
-		</form>
+	<h2>Special Offer</h2>
+	<hr>
+
+	<form method="post" action="./paypal/index.php">
+		<input hidden="text" name="action" value="sale">
+		
+		<h2>
+			<input hidden="text" name="product" value="T-Shirt"> T-Shirt
+			<input hidden="text" name="price" value="10.00"> for USD 10.00
+			<input hidden="text" name="shipping" value="5.00">
+			<input hidden="text" name="tax_rate" value="20">
+		</h2>
+
+		<img src="http://t2.ftcdn.net/jpg/00/42/74/63/400_F_42746392_mnyKgbvEE6AZv3IuFKbg20Rl27ja7CFk.jpg"
+		 alt="T-Shirt">
+
+		<br> -------------------------------------------------------------------- <br>
+		<input type="radio" name="option1" value="Weiß">Weiß <br>
+		<input type="radio" name="option1" value="Schwarz" checked="checked">Schwarz
+
+		<br> -------------------------------------------------------------------- <br>
+		<input type="radio" name="option2" value="XS">XS <br>
+		<input type="radio" name="option2" value="S">S <br>
+		<input type="radio" name="option2" value="M">M <br>
+		<input type="radio" name="option2" value="L" checked="checked">L <br>
+		<input type="radio" name="option2" value="XL">XL <br>
+		<input type="radio" name="option2" value="XXL">XXL
+
+		<br> -------------------------------------------------------------------- <br>
+		Quantety :
+		<select name="qty">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+		Pices
+		<br> -------------------------------------------------------------------- <br>
+		
+		<input type="image" value="submit" name="SetExpressCheckout" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif">
+	</form>

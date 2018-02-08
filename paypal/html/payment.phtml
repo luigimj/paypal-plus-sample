@@ -1,54 +1,122 @@
+<center>
+	<h1>Bezahlen</h1>
+	<hr>
 
-<center><h1>Bezahlen</h1><HR>
-<table align="canter">
-<tr><td colspan="2">
-<h3>Ihre Kundendaten</h3>
-</td></tr>
-<tr><th align="right">Vornahme : </th> <th align="left"> <?php echo urldecode($_SESSION['first_name']) ;?></th></tr>
-<tr><th align="right">Nachnahme : </th><th align="left"> <?php echo urldecode($_SESSION['last_name']) ;?></th></tr>
-<tr><th align="right">Anschrift 1 : </th><th align="left"> <?php echo urldecode($_SESSION['address1']) ;?></th></tr>
-<tr><th align="right">Anschrift 2 : </th><th align="left"> <?php echo urldecode($_SESSION['address2']) ;?></th></tr>
-<tr><th align="right">Stadt : </th><th align="left"> <?php echo urldecode($_SESSION['city']) ;?></th></tr>
-<tr><th align="right">Bundesland : </th><th align="left"> <?php echo urldecode($_SESSION['state']) ;?></th></tr>
-<tr><th align="right">Post Code : </th><th align="left"> <?php echo urldecode($_SESSION['zip']) ;?></th></tr>
-<tr><th align="right">Land : </th><th align="left"> <?php echo urldecode($_SESSION['country']) ;?></th></tr>
-<tr><th align="right">Telefon : </th><th align="left"> <?php echo urldecode($_SESSION['phone']) ;?></th></tr>
-<tr><th align="right">Email : </th><th align="left"> <?php echo urldecode($_SESSION['email']) ;?></th></tr>
-<tr><td colspan="2">
-<h3><br>Ihre Bestellung.</h3>
-</td></tr>
-<tr><th align="right">Prdukt : </th> <th align="left"> <?php echo urldecode($_SESSION['ItemName']);?></th></tr>
-<tr><th align="right">Stückpreis : </th> <th align="left"> <?php echo number_format($_SESSION['ItemPrice'], 2).' '. CURRENCYCODE ; ?></th></tr>
-<tr><th align="right">Menge : </th> <th align="left"> <?php echo number_format($_SESSION['ItemQty'], 2);?></th></tr>
-<tr><th align="right">Summe : </th> <th align="left"> <?php echo number_format($_SESSION['TotalItemAmount'], 2).' '. CURRENCYCODE ;?></th></tr>
-<tr><th align="right"></th> <th align="left"></th></tr>
-<tr><th align="right">USt Satz : </th> <th align="left"> <?php echo number_format(($_SESSION['ItemTaxRate'] * 100), 2).' %' ; ?></th></tr>
-<tr><th align="right">USt Betrag : </th> <th align="left"> <?php echo number_format($_SESSION['TotalTaxAmt'], 2).' '. CURRENCYCODE ;?></th></tr>
-<tr><th align="right">Versandkosten : </th> <th align="left"> <?php echo number_format($_SESSION['ShippingAmt'], 2).' '. CURRENCYCODE ;?></th></tr>
-<tr><th align="right"></th> <th align="left"></th></tr>
-<tr><th align="right">Gesamtsumme : </th> <th align="left"> <?php echo number_format($_SESSION['TotalOrderAmount'], 2).' '. CURRENCYCODE ;?></th></tr>
-</table>
-<div id="ppplus" style="border:2px solid;width:600px;">	</div>
-<script type="application/javascript">
-            var ppp = PAYPAL.apps.PPP({  
-            "approvalUrl": "<?php echo $_SESSION['approvalURL'];?>",
-            "placeholder": "ppplus",
-			"buttonLocation":"outside",
-			"preselection":"none",
-			"language":"<?php echo LOCALECODE;?>",
-            "mode": "<?php echo PP_MODUS;?>",
-			"country":"<?php echo $_SESSION['country'];?>",
-			"thirdPartyPaymentMethods" : [{
-      redirectUrl :"<?php echo $_SESSION['BASE_URL'];?>/paypal/index.php?action=bank",
-      methodName : "Bank transfer",
-      description: "<?php echo BANK_DATA;?>"}]
-            });
-</script><br>
-<button style="width:400;height:80; background-color:DarkOrange" type="submit" id="continueButton" onclick="PAYPAL.apps.PPP.doCheckout();">
-<h3>JETZT KOSTENPFLICHTIG BESTELLEN</h3>
-</button>
-<br>
-<button style="width:400;height:60; background-color:Green" onClick="window.location='<?php echo $_SESSION['BASE_URL'];?>/paypal/index.php?action=cart_change'">
-<h4>BESTELLEN KORREGIEREN</h4>
-</button>
+	<table align="canter">
+		<tr>
+			<td colspan="2"><h3>Ihre Kundendaten</h3></td>
+		</tr>
+		<tr>
+			<th align="right">Vornahme : </th>
+			<th align="left"><?php echo urldecode($_SESSION['first_name']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Nachnahme : </th>
+			<th align="left"><?php echo urldecode($_SESSION['last_name']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Anschrift 1 : </th>
+			<th align="left"><?php echo urldecode($_SESSION['address1']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Anschrift 2 : </th>
+			<th align="left"><?php echo urldecode($_SESSION['address2']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Stadt : </th>
+			<th align="left"><?php echo urldecode($_SESSION['city']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Bundesland : </th>
+			<th align="left"><?php echo urldecode($_SESSION['state']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Post Code : </th>
+			<th align="left"><?php echo urldecode($_SESSION['zip']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Land : </th>
+			<th align="left"><?php echo urldecode($_SESSION['country']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Telefon : </th>
+			<th align="left"><?php echo urldecode($_SESSION['phone']) ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Email : </th>
+			<th align="left"><?php echo urldecode($_SESSION['email']) ;?></th>
+		</tr>
+		<tr>
+			<td colspan="2"><h3><br>Ihre Bestellung.</h3></td>
+		</tr>
+		<tr>
+			<th align="right">Prdukt : </th>
+			<th align="left"><?php echo urldecode($_SESSION['ItemName']);?></th>
+		</tr>
+		<tr>
+			<th align="right">Stückpreis : </th>
+			<th align="left"><?php echo number_format($_SESSION['ItemPrice'], 2).' '. CURRENCYCODE ; ?></th>
+		</tr>
+		<tr>
+			<th align="right">Menge : </th>
+			<th align="left"><?php echo number_format($_SESSION['ItemQty'], 2);?></th>
+		</tr>
+		<tr>
+			<th align="right">Summe : </th>
+			<th align="left"><?php echo number_format($_SESSION['TotalItemAmount'], 2).' '. CURRENCYCODE ;?></th>
+		</tr>
+		<tr>
+			<th align="right"></th>
+			<th align="left"></th>
+		</tr>
+		<tr>
+			<th align="right">USt Satz : </th>
+			<th align="left"><?php echo number_format(($_SESSION['ItemTaxRate'] * 100), 2).' %' ; ?></th>
+		</tr>
+		<tr>
+			<th align="right">USt Betrag : </th>
+			<th align="left"><?php echo number_format($_SESSION['TotalTaxAmt'], 2).' '. CURRENCYCODE ;?></th>
+		</tr>
+		<tr>
+			<th align="right">Versandkosten : </th>
+			<th align="left"><?php echo number_format($_SESSION['ShippingAmt'], 2).' '. CURRENCYCODE ;?></th>
+		</tr>
+		<tr>
+			<th align="right"></th>
+			<th align="left"></th>
+		</tr>
+		<tr>
+			<th align="right">Gesamtsumme : </th>
+			<th align="left"><?php echo number_format($_SESSION['TotalOrderAmount'], 2).' '. CURRENCYCODE ;?></th>
+		</tr>
+	</table>
 
+	<div id="ppplus" style="border:2px solid;width:600px;"> </div>
+
+	<script type="application/javascript">
+		var ppp = PAYPAL.apps.PPP({
+			"approvalUrl": "<?php echo $_SESSION['approvalURL'];?>",
+			"placeholder": "ppplus",
+			"buttonLocation": "outside",
+			"preselection": "none",
+			"language": "<?php echo LOCALECODE;?>",
+			"mode": "<?php echo PP_MODUS;?>",
+			"country": "<?php echo $_SESSION['country'];?>",
+			"thirdPartyPaymentMethods": [{
+				redirectUrl: "<?php echo $_SESSION['BASE_URL'];?>/paypal/index.php?action=bank",
+				methodName: "Bank transfer",
+				description: "<?php echo BANK_DATA;?>"
+			}]
+		});
+	</script>
+
+	<br>
+	<button style="width:400;height:80; background-color:DarkOrange" type="submit"
+	 id="continueButton" onclick="PAYPAL.apps.PPP.doCheckout();">
+		<h3>JETZT KOSTENPFLICHTIG BESTELLEN</h3>
+	</button>
+	
+	<br>
+	<button style="width:400;height:60; background-color:Green" onClick="window.location='<?php echo $_SESSION['BASE_URL'];?>/paypal/index.php?action=cart_change'">
+		<h4>BESTELLEN KORREGIEREN</h4>
+	</button>
