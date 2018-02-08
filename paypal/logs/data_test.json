@@ -1,1 +1,7 @@
-{ "expiry":"1476293421" , "access_token":"A101.CaEANtXHTyXHsmleHgeyjTxAj-XEifllIl0QoyxjSDPC-9ZMcvzLNXcjaDTCnGz1.3V06aAEg1TDaVJSTjQKtpCBA9tS" , "app_id":"APP-80W284485P519543T","token_type":"Bearer","webprofilID":"XP-BKZR-JH4S-5VQ6-NVNG"}
+{
+  "expiry": "1476293421",
+  "access_token": "A101.CaEANtXHTyXHsmleHgeyjTxAj-XEifllIl0QoyxjSDPC-9ZMcvzLNXcjaDTCnGz1.3V06aAEg1TDaVJSTjQKtpCBA9tS",
+  "app_id": "APP-80W284485P519543T",
+  "token_type": "Bearer",
+  "webprofilID": "XP-BKZR-JH4S-5VQ6-NVNG"
+}
