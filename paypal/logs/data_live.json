@@ -1,1 +1,7 @@
-{ "expiry":"" , "access_token":" , "app_id":"","token_type":"","webprofilID":""}
+{
+  "expiry": "",
+  "access_token": "",
+  "app_id": "",
+  "token_type": "",
+  "webprofilID": ""
+}
