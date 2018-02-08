@@ -5,7 +5,7 @@
 	<form method="post" action="index.php" name="cart" id="cartForm">
 		<input hidden="hidden" name="action" value="pay">
 
-		<table align="canter">
+		<table align="center">
 			<tr>
 				<td colspan="2"><h3>Bitte geben sie ihre Kundendaten ein.</h3></td>
 			</tr>
@@ -320,8 +320,8 @@
 				<th align="left"><?php echo number_format($_SESSION['TotalItemAmount'], 2).' '. CURRENCYCODE ;?></th>
 			</tr>
 			<tr>
-				<th align="right"></th><
-					th align="left"></th>
+				<th align="right"></th>
+				<th align="left"></th>
 			</tr>
 			<tr>
 				<th align="right">USt Satz : </th>
@@ -353,7 +353,7 @@
 	<button style="width:400;height:80; background-color:DarkOrange" onclick="document.cart.submit()" id="cartButton">
 		<h3>WEITER ZUR ZAHLUNG</h3>
 	</button>
-	
+
 	<br>
 	<button style="width:400;height:60; background-color:FireBrick" onClick="window.location='<?php echo $_SESSION['BASE_URL'];?>/index.php'">
 		<h4>BESTELLUNG ABBRECHEN</h4>
